@@ -9,6 +9,8 @@ public class Interval {
 		
 		if(intervals == null || intervals.length == 0) return 0;
 		
+		// Need to sort it first
+		
 		int currMin;
 		int currMax;
 		int total = 0;
@@ -22,8 +24,8 @@ public class Interval {
 			
 			if(i+1 < pIntervals.length) {
 				for(int j=i+1; j<pIntervals.length; j++) {
-					if(pIntervals[j][0] >= currInterval[0] && pIntervals[j][0] < currInterval[1]
-							|| pIntervals[j][1] <= currInterval[1] && pIntervals[j][1] > currInterval[0]) {
+					if(pIntervals[j][0] >= currMin && pIntervals[j][0] <= currMax
+							|| pIntervals[j][1] <= currMax && pIntervals[j][1] >= currMin) {
 						currMin = Math.min(currMin, pIntervals[j][0]);
 						currMax = Math.max(currMax, pIntervals[j][1]);
 						pIntervals[j][0] = 0;
